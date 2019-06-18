@@ -135,11 +135,19 @@ var questionGenerator = [];
 var answers = [];
 var score = 0;
 
-quizStart()
+var clockRunning = false;
+var time = 60;
+
+$('#submit').hide();
+$('#restart').hide();
 
 function quizStart() {
 
-
+    $('#questions').show();
+    $('#questions').empty();
+    $('#quiz').show();
+    timerReset();
+    questionGenerator = [];
     
     // Picks 5 questions out of 9 and logs them to a var to hold for further use
     while (questionGenerator.length < 5) {
@@ -170,10 +178,10 @@ function quizStart() {
         // Prints answers in a list with 
         for(var j = 0; j < 3; j++){
                 
-            var li = $('<li>');
+            var li = $('<li id="quiz" name="quiz">');
             var label = $('<label>');
-            var input = $('<input type="radio">').attr({name: 'gues' + i, value: j});
-            
+            var input = $('<input type="radio">').attr({id: 'gues' + i, name: 'gues' + i, value: j});
+
             label.text(questionGenerator[i].answers[j])
 
             label.prepend(input);
@@ -193,10 +201,91 @@ function quizStart() {
 
 }
 
+$('#start').on('click', function(){
+    $('#start').hide();
+    $('#submit').show();
+    quizStart();
+});
+
+$('#submit').on('click', function(){
+    $('#submit').hide();
+    $('#questions').hide();
+    $('#timer').hide();
+    $('#restart').show();
+    
+    for(i=0; i<questionGenerator.length; i++){
+        
+        var userAnswer='';
+        userAnswer= $('#ques0').val();
+        console.log(userAnswer);
+       
+        /*if(userAnswer===0 && questionGenerator[i].correctAnswer==='a' || userAnswer===1 && questionGenerator[i].correctAnswer==='b' || userAnswer===2 && questionGenerator[i].correctAnswer==='c'){
+
+        }*/
+    }
+
+});
+
+$('#restart').on('click', function(){
+    $('#start').show();
+    $('#restart').hide();
+
+});
 
 
 
+// Timer functions below
+function timerReset(){
+    $('#timer').text("01:00");
+    $('#timer').show();
+    start();
 
+function start() {
+   time = 60;
+    if (!clockRunning) {
+      intervalId = setInterval(count, 1000);
+      clockRunning = true;
+    }
+  }
+
+function count() {
+
+    
+    time--;
+
+    var converted = timeConverter(time);
+    console.log(converted);
+
+    if(time===0){
+        clearInterval(intervalId);
+        clockRunning = false;
+        $('#questions').hide();
+        $('#timer').hide();
+    }
+  
+    
+    $("#timer").text(converted);
+  }
+
+function timeConverter(t) {
+
+    var minutes = Math.floor(t / 60);
+    var seconds = t - (minutes * 60);
+  
+    if (seconds < 10) {
+      seconds = "0" + seconds;
+    }
+  
+    if (minutes === 0) {
+      minutes = "00";
+    }
+    else if (minutes < 10) {
+      minutes = "0" + minutes;
+    }
+  
+    return minutes + ":" + seconds;
+  }
+}
 
 
 
