@@ -1,0 +1,27 @@
+body{
+
+}
+
+h1{
+    margin-left: 40px;
+}
+
+#questions{
+    font-size: 20px;
+    margin-left: 40px;
+}
+
+#timer{
+    margin-left: 40px;   
+}
+
+.button {
+    background-color: rgb(119, 15, 15) ;
+    color: white;
+    border: rgb(119, 15, 15);
+    border-radius: 12px;
+    height: 50px;
+    width: 100px;
+    margin: 40px;
+
+}
