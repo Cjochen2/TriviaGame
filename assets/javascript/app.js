@@ -201,23 +201,28 @@ function quizStart() {
 
 }
 
+// Starts the quiz and timer
 $('#start').on('click', function(){
     $('#start').hide();
     $('#submit').show();
     quizStart();
 });
 
+// Submits teh quiz and loads results
 $('#submit').on('click', function(){
     $('#submit').hide();
     $('#questions').hide();
     $('#timer').hide();
     $('#restart').show();
-    
+
+    // For loop desginated to checking the answers and updating the score.
     for(var i=0; i<questionGenerator.length; i++){
         var userAnswer = $('input[name=gues'+i+']:checked').val();
+        userAnswer = parseInt(userAnswer);
+        var char = String.fromCharCode(97 + userAnswer);;
         console.log(userAnswer);
-        
-    if(userAnswer === 0 && questionGenerator[i].correctAnswer === 'a' || userAnswer === 1 && questionGenerator[i].correctAnswer === 'b' || userAnswer===2 && questionGenerator[i].correctAnswer === 'c'){
+        console.log(char);
+    if(char === questionGenerator[i].correctAnswer  || char === questionGenerator[i].correctAnswer || char === questionGenerator[i].correctAnswer){
             score++
         }
         console.log(questionGenerator[i].correctAnswer)
@@ -226,6 +231,7 @@ $('#submit').on('click', function(){
 
 });
 
+//Resets variables and values and picks 5 new questions.
 $('#restart').on('click', function(){
     $('#start').show();
     $('#restart').hide();
