@@ -214,14 +214,14 @@ $('#submit').on('click', function(){
     $('#restart').show();
     
     for(var i=0; i<questionGenerator.length; i++){
-        var userAnswer='';
-        userAnswer= $('#gues0-0').attr('value')
+        var userAnswer = $('input[name=gues'+i+']:checked').val();
         console.log(userAnswer);
-    
-        /*if(userAnswer===0 && questionGenerator[i].correctAnswer==='a' || userAnswer===1 && questionGenerator[i].correctAnswer==='b' || userAnswer===2 && questionGenerator[i].correctAnswer==='c'){
-
-        }*/
+        
+    if(userAnswer === 0 && questionGenerator[i].correctAnswer === 'a' || userAnswer === 1 && questionGenerator[i].correctAnswer === 'b' || userAnswer===2 && questionGenerator[i].correctAnswer === 'c'){
+            score++
+        }
         console.log(questionGenerator[i].correctAnswer)
+        console.log(score);
     } 
 
 });
