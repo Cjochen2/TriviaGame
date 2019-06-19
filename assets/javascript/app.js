@@ -141,8 +141,9 @@ var time = 60;
 $('#submit').hide();
 $('#restart').hide();
 
-function quizStart() {
 
+function quizStart() {
+    score = 0;
     $('#questions').show();
     $('#questions').empty();
     $('#quiz').show();
@@ -210,9 +211,13 @@ $('#start').on('click', function(){
 
 // Submits teh quiz and loads results
 $('#submit').on('click', function(){
+    clearInterval(intervalId);
+    clockRunning = false;
     $('#submit').hide();
     $('#questions').hide();
     $('#timer').hide();
+    $('#end').empty();
+    $('#results').show();
     $('#restart').show();
 
     // For loop desginated to checking the answers and updating the score.
@@ -228,13 +233,14 @@ $('#submit').on('click', function(){
         console.log(questionGenerator[i].correctAnswer)
         console.log(score);
     } 
-
+ $('#results').text('Score: ' + score + ' out of ' + questionGenerator.length)
 });
 
 //Resets variables and values and picks 5 new questions.
 $('#restart').on('click', function(){
     $('#start').show();
     $('#restart').hide();
+    $('#results').hide();
 
 });
 
@@ -267,6 +273,8 @@ function count() {
         clockRunning = false;
         $('#questions').hide();
         $('#timer').hide();
+        var end = $('#end').html('<br> Time is Up!');
+        $('#header').append(end);
     }
   
     
