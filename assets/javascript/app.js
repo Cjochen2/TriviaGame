@@ -132,7 +132,6 @@ var questionsArr = [
 
 ];
 var questionGenerator = [];
-var answers = [];
 var score = 0;
 
 var clockRunning = false;
@@ -209,7 +208,7 @@ $('#start').on('click', function(){
     quizStart();
 });
 
-// Submits teh quiz and loads results
+// Submits the quiz and loads results.
 $('#submit').on('click', function(){
     clearInterval(intervalId);
     clockRunning = false;
@@ -267,7 +266,7 @@ function count() {
 
     var converted = timeConverter(time);
     //console.log(converted);
-
+    // If the timer hits zero it tells the user that time is up and asks them to hit the submit button
     if(time===0){
         clearInterval(intervalId);
         clockRunning = false;
