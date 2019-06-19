@@ -180,7 +180,7 @@ function quizStart() {
                 
             var li = $('<li id="quiz" name="quiz">');
             var label = $('<label>');
-            var input = $('<input type="radio">').attr({id: 'gues' + i, name: 'gues' + i, value: j});
+            var input = $('<input type="radio">').attr({'id': 'gues' + i + '-' + j, 'name': 'gues' + i, 'value': j});
 
             label.text(questionGenerator[i].answers[j])
 
@@ -213,16 +213,16 @@ $('#submit').on('click', function(){
     $('#timer').hide();
     $('#restart').show();
     
-    for(i=0; i<questionGenerator.length; i++){
-        
+    for(var i=0; i<questionGenerator.length; i++){
         var userAnswer='';
-        userAnswer= $('#ques0').val();
+        userAnswer= $('#gues0-0').attr('value')
         console.log(userAnswer);
-       
+    
         /*if(userAnswer===0 && questionGenerator[i].correctAnswer==='a' || userAnswer===1 && questionGenerator[i].correctAnswer==='b' || userAnswer===2 && questionGenerator[i].correctAnswer==='c'){
 
         }*/
-    }
+        console.log(questionGenerator[i].correctAnswer)
+    } 
 
 });
 
@@ -254,7 +254,7 @@ function count() {
     time--;
 
     var converted = timeConverter(time);
-    console.log(converted);
+    //console.log(converted);
 
     if(time===0){
         clearInterval(intervalId);

@@ -1,18 +1,29 @@
 body{
+    background-image: url('../images/background1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat; 
+    height: 100%;
+    width: 100%;
 
 }
 
 h1{
     margin-left: 40px;
+    color: white;
+    text-shadow: 2px 2px rgb(119, 15, 15);
 }
 
 #questions{
     font-size: 20px;
     margin-left: 40px;
+    color: white;
+    text-shadow: 2px 2px black;
 }
 
 #timer{
     margin-left: 40px;   
+    color:white;
+    text-shadow: 2px 2px rgb(119, 15, 15);
 }
 
 .button {
