@@ -7,3 +7,5 @@ The user has 1 minute to answer each of the 6 questions and then submit them to 
 The biggest challenge for me here was creating everything as dyanmic as possible and utilizing the least amount of coded HTML that I could.
 
 Try it out here: https://cjochen2.github.io/TriviaGame/
+
+![GifTastic](assets/images/appImage2.JPG)
